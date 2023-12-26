@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-zbl21o1v2c=9+agx%v+jv^k6&7j(f3f)a^(#8iqlg^m7$^&o-)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['sensitive-word-detection.onrender.com', 'www.sensitive-word-detection.onrender.com']
+_HOSTS = ['*']
 
 
 # Application definition
