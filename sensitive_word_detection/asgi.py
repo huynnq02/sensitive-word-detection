@@ -1,5 +1,5 @@
 """
-ASGI config for hate_speech_recognition_vi project.
+ASGI config for sensitive_word_detection project.
 
 It exposes the ASGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.asgi import get_asgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'hate_speech_recognition_vi.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'sensitive_word_detection.settings')
 
 application = get_asgi_application()
