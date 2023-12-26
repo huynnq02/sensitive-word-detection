@@ -70,13 +70,15 @@ model_path = os.path.join(os.path.dirname(__file__), 'model', 'best_model.hdf5')
 loaded_model = load_model(model_path)
 file_path = os.path.join(os.path.dirname(__file__), 'data', '02_train_text.csv')
 dataTrainText = pd.read_csv(file_path, header = 0, names = ['id', 'free_text'])
-train_descs = dataTrainText['free_text'].str.lower()
-for i in range(len(train_descs)):
-    train_descs.values[i]=Preprocess(train_descs.values[i])
-for i in range(len(train_descs)):
-    train_descs.values[i] = give_emoji_free_text(train_descs.values[i])
-for i in range(len(train_descs)):
-    train_descs.values[i]=word_segment(train_descs.values[i])
+dataTrainText['free_text'] = (
+    dataTrainText['free_text']
+    .str.lower()  # Convert to lowercase
+    .apply(Preprocess)  # Apply Preprocess function
+    .apply(give_emoji_free_text)  # Apply give_emoji_free_text function
+    .apply(word_segment)  # Apply word_segment function
+)
+train_descs = dataTrainText['free_text']
+
 # embedding_path = os.path.join(os.path.dirname(__file__), 'fasttest', 'cc.vi.300.vec')
 embed_size = 300
 max_features = 130000
