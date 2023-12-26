@@ -6,3 +6,4 @@ pyvi
 keras
 panda
 numpy
+gunicorn
