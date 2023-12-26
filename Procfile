@@ -1,0 +1,1 @@
+web: gunicorn sensitive_word_detection.wsgi:application
