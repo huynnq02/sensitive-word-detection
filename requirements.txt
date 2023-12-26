@@ -1,0 +1,8 @@
+Django
+djangorestframework
+emoji
+gensim
+pyvi
+keras
+panda
+numpy
