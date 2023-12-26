@@ -77,21 +77,21 @@ for i in range(len(train_descs)):
     train_descs.values[i] = give_emoji_free_text(train_descs.values[i])
 for i in range(len(train_descs)):
     train_descs.values[i]=word_segment(train_descs.values[i])
-embedding_path = os.path.join(os.path.dirname(__file__), 'fasttest', 'cc.vi.300.vec')
+# embedding_path = os.path.join(os.path.dirname(__file__), 'fasttest', 'cc.vi.300.vec')
 embed_size = 300
 max_features = 130000
 tk = Tokenizer(num_words=max_features, lower=True)
 tk.fit_on_texts(train_descs)
-def get_coefs(word, *arr): return word, np.asarray(arr, dtype='float32')
-embedding_index = dict(get_coefs(*o.strip().split(" ")) for o in open(embedding_path, encoding="utf-8"))       
-word_index = tk.word_index
-nb_words = min(max_features, len(word_index) + 1)
-embedding_matrix = np.zeros((nb_words, embed_size))
-for word, i in word_index.items():
-    if i >= max_features: continue
-    embedding_vector = embedding_index.get(word)
-    print(embedding_vector)
-    if embedding_vector is not None: embedding_matrix[i] = embedding_vector
+# def get_coefs(word, *arr): return word, np.asarray(arr, dtype='float32')
+# embedding_index = dict(get_coefs(*o.strip().split(" ")) for o in open(embedding_path, encoding="utf-8"))       
+# word_index = tk.word_index
+# nb_words = min(max_features, len(word_index) + 1)
+# embedding_matrix = np.zeros((nb_words, embed_size))
+# for word, i in word_index.items():
+#     if i >= max_features: continue
+#     embedding_vector = embedding_index.get(word)
+#     print(embedding_vector)
+#     if embedding_vector is not None: embedding_matrix[i] = embedding_vector
 
 def detect_hate_speech(text): 
     text_to_predict = [text]
