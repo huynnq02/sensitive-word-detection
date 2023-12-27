@@ -69,17 +69,33 @@ max_len = 220
 model_path = os.path.join(os.path.dirname(__file__), 'model', 'best_model.hdf5')
 loaded_model = load_model(model_path)
 file_path = os.path.join(os.path.dirname(__file__), 'data', '02_train_text.csv')
-dataTrainText = pd.read_csv(file_path, header = 0, names = ['id', 'free_text'])
-dataTrainText['free_text'] = (
-    dataTrainText['free_text']
-    .str.lower()  # Convert to lowercase
-    .apply(Preprocess)  # Apply Preprocess function
-    .apply(give_emoji_free_text)  # Apply give_emoji_free_text function
-    .apply(word_segment)  # Apply word_segment function
-)
-train_descs = dataTrainText['free_text']
 
+# dataTrainText = pd.read_csv(file_path, header = 0, names = ['id', 'free_text'])
+# dataTrainText['free_text'] = (
+#     dataTrainText['free_text']
+#     .str.lower()  # Convert to lowercase
+#     .apply(Preprocess)  # Apply Preprocess function
+#     .apply(give_emoji_free_text)  # Apply give_emoji_free_text function
+#     .apply(word_segment)  # Apply word_segment function
+# )
+# train_descs = dataTrainText['free_text']
+# print(train_descs[0])
+# print(train_descs[1])
+# output_file_path = 'train_descs.txt'
+
+# Save train_descs to a text file
+# train_descs.to_csv(output_file_path, index=False, header=False)
 # embedding_path = os.path.join(os.path.dirname(__file__), 'fasttest', 'cc.vi.300.vec')
+current_directory = os.path.dirname(__file__)
+file_path = os.path.join(current_directory, 'data', 'train_descs.txt')
+# with open(file_path, 'r', encoding='utf-8') as file:
+#     train_descs = file.read()
+
+with open(file_path, 'r', encoding='utf-8') as file:
+    train_descs = [line.strip() for line in file.readlines()]
+print(train_descs[0])
+print(train_descs[1])
+print(train_descs[2])
 embed_size = 300
 max_features = 130000
 tk = Tokenizer(num_words=max_features, lower=True)
