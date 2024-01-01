@@ -136,7 +136,7 @@ def hate_speech_detection(request):
             text = data.get('text', '')
             if text:
                 is_hate_speech = detect_hate_speech(text)
-                response_data = {'is_hate_speech': is_hate_speech}
+                response_data = {"is_hate_speech": is_hate_speech}
                 return JsonResponse(response_data, status=200)
             else:
                 return JsonResponse({'error': 'Text parameter is required'}, status=400)
